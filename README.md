@@ -1,3 +1,7 @@
+<div align='center'>
+  <img width="200px" src='https://i.ibb.co/SV6sZhn/blurple-5.png'>
+</div>
+
 # Twitter Schedule Bot 📅
 [![Travis](https://api.travis-ci.org/carterh64/schedule.svg?branch=master)](https://travis-ci.org/carterh64/schedule)
 [![Dependencies](https://img.shields.io/david/carterh64/schedule.svg?maxAge=3600)](https://david-dm.org/carterh64/schedule)
@@ -8,6 +12,16 @@ This bot will autonomously post announcements and reminders 10 minutes before th
 
 ## How it works
 A cronjob will fire every day at 6:30 am, where it will send the initial tweet for the day. At the scheduled time for each reminder, a reply will be added to the initial tweet.
+
+## Running
+It's suggested to run the bot in a Docker container. However, since Docker doesn't have a log system like pm2 does, I'll be using pm2 to run it until I integrate Sentury to handle errors and what not for me.
+
+## Handing Tweets
+This packages uses the [`twit`](https://npmjs.com/twit) library. Yes, it's very oudated but I'm working on making my own Twitter library built on axios.
+
+### Images
+Twitter is weird when it comes to images. To add an image to your tweet, you must first encode your image into base 64 then upload it to their media endpoint.  
+For this project, I'm using the [`node-superfetch`](https://npmjs.com/node-superfetch) package to request image links then encode them to base 64. Only after will I send it up to twitter's media endpoint. It will then return a media ID that you ~~can~~ should reuse for our purpouses. 
 
 ## Delays
 The initial tweet providing the schedule images is fired at 06:30 when the cronjob is ran.
