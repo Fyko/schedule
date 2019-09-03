@@ -7,7 +7,7 @@ export default class RESTHandler {
 
 	public twitter: twit;
 
-	constructor(client: Client) {
+	public constructor(client: Client) {
 		this.client = client;
 		this.twitter = new twit({
 			consumer_key: process.env.CONSUMER_KEY!,
