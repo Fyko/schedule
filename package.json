@@ -8,7 +8,7 @@
         "name": "Carter",
         "email": "me@fyko.net"
     },
-    "main": "build/index.js",
+    "main": "build/schedule.js",
     "dependencies": {
         "@types/mongoose": "^5.5.16",
         "common-tags": "^1.8.0",
