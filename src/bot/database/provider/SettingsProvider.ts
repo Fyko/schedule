@@ -5,14 +5,14 @@ import TweetModel, { Tweet } from '../models/Tweet';
 import { Logger } from 'winston';
 let i = 0;
 
-export interface Models { [key: string]: Model<any> };
+export interface Models { [key: string]: Model<any> }
 
 export type Types = 'tweet';
 
 export type ModelTypes = Tweet;
 
 const MODELS: Models = {
-	tweet: TweetModel
+	tweet: TweetModel,
 };
 
 export default class SettingsProvider {
