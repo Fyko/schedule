@@ -105,7 +105,7 @@ export const BLUE: Schedule = {
 		triggerAfter: 210,
 	},
 	2: {
-		text: 'If your 5th pd. class is downstairs, go to lunch! If not, head over to 5th pd. It starts at 11:00AM!', // must send at 10:50 
+		text: 'If your 5th pd. class is downstairs, go to lunch! If not, head over to 5th pd. It starts at 11:00AM!', // must send at 10:50
 		triggerAfter: 330,
 	},
 	3: {
