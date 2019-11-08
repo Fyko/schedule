@@ -69,7 +69,6 @@ export default class Client {
 
 	private _createTask(): void {
 		this.task = schedule('30 5 * * *', () => {
-			return console.log('okay');
 			this.handleDay();
 		}, {
 			timezone: 'America/Denver',
