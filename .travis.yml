@@ -2,4 +2,4 @@ sudo: false
 language: node_js
 node_js:
   - '10'
-install: npm i -g eslint eslint-config-marine eslit-config-prettier eslint-plugin-prettier
+install: npm i -g eslint eslint-config-marine eslint-config-prettier eslint-plugin-prettier
