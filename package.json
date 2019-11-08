@@ -37,6 +37,7 @@
     },
     "scripts": {
         "lint": "eslint src --fix --ext .ts",
+        "test": "yarn run lint",
         "cleardir": "rimraf build/*",
         "compile": "tsc",
         "build": "npm run cleardir && npm run compile",
