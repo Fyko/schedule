@@ -3,7 +3,7 @@
 </div>
 
 # Twitter Schedule Bot 📅
-[![Travis](https://api.travis-ci.org/carterh64/schedule.svg?branch=master)](https://travis-ci.org/carterh64/schedule)
+[![Actions Status](https://github.com/carterh64/schedule/workflows/Lint/badge.svg)](https://github.com/carterh64/schedule/actions)
 [![Dependencies](https://img.shields.io/david/carterh64/schedule.svg?maxAge=3600)](https://david-dm.org/carterh64/schedule)
 [![GitHub issues](https://img.shields.io/github/issues/carterh64/schedule)](https://github.com/sycer-dev/carterh64/schedule)
 [![GitHub stars](https://img.shields.io/github/stars/carterh64/schedule)](https://github.com/sycer-dev/carterh64/schedule)  
