@@ -1,4 +1,4 @@
-import { Collection } from 'discord.js';
+import { Collection } from '@discordjs/collection';
 import RESTHandler from '../rest/RESTHandler';
 import { schedule, ScheduledTask } from 'node-cron';
 import { createLogger, format, Logger, transports } from 'winston';
