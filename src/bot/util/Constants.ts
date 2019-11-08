@@ -97,24 +97,24 @@ export const BLUE: Schedule = {
 		triggerAfter: 0,
 	},
 	0: {
-		text: 'Good morning RV Mustangs! It\'s a Blue day, 1st pd. starts at 07:25AM!',
+		text: 'Good morning RV Mustangs! It\'s a Blue day, 1st pd. starts at 07:25AM!', // must send at 5:30
 		triggerAfter: 0,
 	},
 	1: {
-		text: 'Good job, 3rd pd. starts at 09:10AM!',
-		triggerAfter: 150,
+		text: 'Good job, 3rd pd. starts at 09:10AM!', // must send at 9:00
+		triggerAfter: 210,
 	},
 	2: {
-		text: 'If your 5th pd. class is downstairs, go to lunch! If not, head over to 5th pd. It starts at 11:00AM!',
-		triggerAfter: 300,
+		text: 'If your 5th pd. class is downstairs, go to lunch! If not, head over to 5th pd. It starts at 11:00AM!', // must send at 10:50 
+		triggerAfter: 330,
 	},
 	3: {
-		text: 'Let\'s keep in moving! If you just had 5th pd. go to lunch. 1st lunch, go to your 5th pd. class, it starts at 11:35AM!',
-		triggerAfter: 335,
+		text: 'Let\'s keep in moving! If you just had 5th pd. go to lunch. 1st lunch, go to your 5th pd. class, it starts at 11:35AM!', // must send at 11:25
+		triggerAfter: 365,
 	},
 	4: {
-		text: 'Last class! 7th pd. starts at 1:25PM!',
-		triggerAfter: 385,
+		text: 'Last class! 7th pd. starts at 1:25PM!', // must send at 13:15
+		triggerAfter: 475,
 	},
 };
 
