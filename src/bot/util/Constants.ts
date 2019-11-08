@@ -1,13 +1,19 @@
-interface Days { [key: number]: string }
+interface Days {
+	[key: number]: string;
+}
 
-export interface Schedule { [key: number]: ScheduleOptions }
+export interface Schedule {
+	[key: number]: ScheduleOptions;
+}
 
 interface ScheduleOptions {
 	triggerAfter: number;
 	text: string;
 }
 
-interface Schedules { [key: number]: Schedule }
+interface Schedules {
+	[key: number]: Schedule;
+}
 
 export const DAYS: Days = {
 	1: 'Monday',
@@ -19,7 +25,7 @@ export const DAYS: Days = {
 
 export const TUES_ICE: Schedule = {
 	0: {
-		text: 'Good morning RV Mustangs! Today\'s a White day! Math & PE I.C.E. starts at 07:25AM!',
+		text: "Good morning RV Mustangs! Today's a White day! Math & PE I.C.E. starts at 07:25AM!",
 		triggerAfter: 0,
 	},
 	1: {
@@ -34,7 +40,7 @@ export const TUES_ICE: Schedule = {
 
 export const THURS_ICE: Schedule = {
 	0: {
-		text: 'Good morning RV Mustangs! Today\'s a White day! MMP and Club Meetings start at 07:25AM!',
+		text: "Good morning RV Mustangs! Today's a White day! MMP and Club Meetings start at 07:25AM!",
 		triggerAfter: 0,
 	},
 	1: {
@@ -53,7 +59,7 @@ export const SILVER: Schedule = {
 		triggerAfter: 0,
 	},
 	0: {
-		text: 'Good morning RV Mustangs! It\'s Monday, a Silver day. 1st pd. starts at 07:25AM!',
+		text: "Good morning RV Mustangs! It's Monday, a Silver day. 1st pd. starts at 07:25AM!",
 		triggerAfter: 0,
 	},
 	1: {
@@ -73,11 +79,12 @@ export const SILVER: Schedule = {
 		triggerAfter: 275,
 	},
 	5: {
-		text: 'Let\'s keep in moving! If you just had 2nd pd. go to lunch. 1st lunch, go to your 2nd pd. class, it starts at 12:25PM!',
+		text:
+			"Let's keep in moving! If you just had 2nd pd. go to lunch. 1st lunch, go to your 2nd pd. class, it starts at 12:25PM!",
 		triggerAfter: 315,
 	},
 	6: {
-		text: 'You\'re getting closer! 4th pd. starts at 01:05PM!',
+		text: "You're getting closer! 4th pd. starts at 01:05PM!",
 		triggerAfter: 375,
 	},
 	7: {
@@ -85,11 +92,10 @@ export const SILVER: Schedule = {
 		triggerAfter: 435,
 	},
 	8: {
-		text: 'Good job! Tomorrow\'s a White Day, I.C.E. starts at 07:25AM!',
+		text: "Good job! Tomorrow's a White Day, I.C.E. starts at 07:25AM!",
 		triggerAfter: 515,
 	},
 };
-
 
 export const BLUE: Schedule = {
 	25: {
@@ -97,7 +103,7 @@ export const BLUE: Schedule = {
 		triggerAfter: 0,
 	},
 	0: {
-		text: 'Good morning RV Mustangs! It\'s a Blue day, 1st pd. starts at 07:25AM!', // must send at 5:30
+		text: "Good morning RV Mustangs! It's a Blue day, 1st pd. starts at 07:25AM!", // must send at 5:30
 		triggerAfter: 0,
 	},
 	1: {
@@ -109,7 +115,8 @@ export const BLUE: Schedule = {
 		triggerAfter: 330,
 	},
 	3: {
-		text: 'Let\'s keep in moving! If you just had 5th pd. go to lunch. 1st lunch, go to your 5th pd. class, it starts at 11:35AM!', // must send at 11:25
+		text:
+			"Let's keep in moving! If you just had 5th pd. go to lunch. 1st lunch, go to your 5th pd. class, it starts at 11:35AM!", // must send at 11:25
 		triggerAfter: 365,
 	},
 	4: {
@@ -124,7 +131,7 @@ const WHITE: Schedule = {
 		triggerAfter: 0,
 	},
 	3: {
-		text: 'That\'s all for I.C.E. 2nd pd. starts at 09:10AM!',
+		text: "That's all for I.C.E. 2nd pd. starts at 09:10AM!",
 		triggerAfter: 150,
 	},
 	4: {
@@ -140,7 +147,7 @@ const WHITE: Schedule = {
 		triggerAfter: 385,
 	},
 	7: {
-		text: 'Good work! Tomorrow\'s a Blue Day, 1st pd. starts at 07:25AM!',
+		text: "Good work! Tomorrow's a Blue Day, 1st pd. starts at 07:25AM!",
 		triggerAfter: 505,
 	},
 };
@@ -166,7 +173,6 @@ export const THURS_WHITE: Schedule = {
 	2: THURS_ICE[2],
 	...WHITE,
 };
-
 
 export const SCHEDULES: Schedules = {
 	1: SILVER,

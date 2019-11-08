@@ -31,12 +31,14 @@
         "dotenv": "^8.0.0",
         "eslint": "^6.6.0",
         "eslint-config-marine": "^5.3.2",
+        "eslint-config-prettier": "^6.5.0",
+        "eslint-plugin-prettier": "^3.1.1",
+        "prettier": "prettier/prettier",
         "rimraf": "^3.0.0",
-        "ts-node": "^8.3.0",
-        "typescript": "^3.4.5"
+        "typescript": "^3.7.2"
     },
     "scripts": {
-        "lint": "eslint src --fix --ext .ts",
+        "lint": "eslint src --ext .ts",
         "test": "yarn run lint",
         "cleardir": "rimraf build/*",
         "compile": "tsc",
@@ -46,12 +48,13 @@
     },
     "keywords": [],
     "eslintConfig": {
-        "extends": "marine/node",
+        "extends": "marine/prettier/node",
         "rules": {
             "comma-dangle": [
                 "error",
                 "always-multiline"
-            ]
+            ],
+            "@typescript-eslint/no-unnecessary-type-arguments": "off"
         }
     }
 }

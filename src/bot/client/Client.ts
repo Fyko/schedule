@@ -30,13 +30,14 @@ export default class Client {
 			format.timestamp({ format: 'MM/DD/YYYY HH:mm:ss' }),
 			format.printf((data: any) => {
 				const { timestamp, level, message, ...rest } = data;
-				return `[${timestamp}] ${level}: ${message}${Object.keys(rest).length ? `\n${JSON.stringify(rest, null, 2)}` : ''}`;
+				return `[${timestamp}] ${level}: ${message}${
+					Object.keys(rest).length ? `\n${JSON.stringify(rest, null, 2)}` : ''
+				}`;
 			}),
 		),
 		transports: new transports.Console(),
 		level: 'custom',
-	});;
-
+	});
 
 	private async handleDay(): Promise<void> {
 		const now = new Date();
@@ -56,11 +57,16 @@ export default class Client {
 				});
 				for (const [i, options] of Object.entries(schedule)) {
 					if (['0', '25', '26'].includes(`${i}`)) continue;
-					this.waiting.set(i, setTimeout(() => {
-						this.twitter.reply(options.text, tweet.id_str);
-					}, (options.triggerAfter * 60 * 1000)));
+					this.waiting.set(
+						i,
+						setTimeout(() => {
+							this.twitter.reply(options.text, tweet.id_str);
+						}, options.triggerAfter * 60 * 1000),
+					);
 				}
-			} else { this.logger.error(`[ERROR ON TWEET]: Tweet returned null.`); }
+			} else {
+				this.logger.error(`[ERROR ON TWEET]: Tweet returned null.`);
+			}
 		} catch (err) {
 			this.logger.error(`[ERROR ON HANDLE]: ${err}`);
 		}
@@ -68,11 +74,15 @@ export default class Client {
 	}
 
 	private _createTask(): void {
-		this.task = schedule('30 5 * * *', () => {
-			this.handleDay();
-		}, {
-			timezone: 'America/Denver',
-		});
+		this.task = schedule(
+			'30 5 * * *',
+			() => {
+				this.handleDay();
+			},
+			{
+				timezone: 'America/Denver',
+			},
+		);
 	}
 
 	public async init(): Promise<void> {

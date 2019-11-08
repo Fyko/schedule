@@ -18,7 +18,7 @@ export default class RESTHandler {
 	}
 
 	public async tweet(content: string, images: string[] = []): Promise<Twitter.Status | null> {
-		this.client.logger.info(`[PROCESSING TWEET] Encoding ${images!.length} images.`);
+		this.client.logger.info(`[PROCESSING TWEET] Encoding ${images.length} images.`);
 		const encodedImages: string[] = [];
 		for (const i of images) {
 			const str = await this.encode(i);
@@ -26,7 +26,7 @@ export default class RESTHandler {
 		}
 
 		/* uploading images to twitter because twitter is still retarded */
-		this.client.logger.info(`[PROCESSING TWEET] Uploading ${images!.length} images.`);
+		this.client.logger.info(`[PROCESSING TWEET] Uploading ${images.length} images.`);
 		const mediaIDs = [];
 		for (const m of encodedImages) {
 			const up = await this.upload(m);

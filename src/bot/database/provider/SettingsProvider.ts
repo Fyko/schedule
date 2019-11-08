@@ -5,7 +5,9 @@ import TweetModel, { Tweet } from '../models/Tweet';
 import { Logger } from 'winston';
 let i = 0;
 
-export interface Models { [key: string]: Model<any> }
+export interface Models {
+	[key: string]: Model<any>;
+}
 
 export type Types = 'tweet';
 
@@ -37,7 +39,7 @@ export default class SettingsProvider {
 	public async new(type: Types, data: object): Promise<ModelTypes> {
 		const model = MODELS[type];
 		const doc = new model(data);
-		this[type].set(doc.id, doc as any);
+		this[type].set(doc.id, doc);
 		// @ts-ignore
 		await doc.save();
 		this.client.logger.info(`[DATABASE] Made new ${model.modelName} document with ID of ${doc._id}.`);
@@ -47,10 +49,10 @@ export default class SettingsProvider {
 	/* setting options of an existing document */
 	public async set(type: Types, data: object, key: object): Promise<ModelTypes | null> {
 		const model = MODELS[type];
-		const doc = await model.findOneAndUpdate(data, { $set: key }, { 'new': true });
+		const doc = await model.findOneAndUpdate(data, { $set: key }, { new: true });
 		if (!doc) return null;
 		this.client.logger.info(`[DATABASE] Edited ${model.modelName} document with ID of ${doc._id}.`);
-		this[type].set(doc.id, doc as any);
+		this[type].set(doc.id, doc);
 		return doc;
 	}
 
@@ -75,7 +77,7 @@ export default class SettingsProvider {
 		const collection = this[type];
 		const items = await model.find();
 		for (const i of items) collection.set(i.id, i);
-		return i += items.length;
+		return (i += items.length);
 	}
 
 	/* connecting */

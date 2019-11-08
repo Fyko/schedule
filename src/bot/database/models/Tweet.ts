@@ -8,25 +8,28 @@ export interface Tweet extends Document {
 	createdAt: Date;
 }
 
-const Tweet: Schema = new Schema({
-	tweetID: {
-		type: String,
-		required: true,
+const Tweet: Schema = new Schema(
+	{
+		tweetID: {
+			type: String,
+			required: true,
+		},
+		nextEvent: {
+			type: Number,
+			default: 1,
+		},
+		createdAt: {
+			type: Date,
+			default: new Date(),
+		},
+		schedule: {
+			type: Object,
+			required: true,
+		},
 	},
-	nextEvent: {
-		'type': Number,
-		'default': 1,
+	{
+		strict: false,
 	},
-	createdAt: {
-		'type': Date,
-		'default': new Date(),
-	},
-	schedule: {
-		type: Object,
-		required: true,
-	},
-}, {
-	strict: false,
-});
+);
 
 export default model<Tweet>('Tweet', Tweet);
