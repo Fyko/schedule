@@ -1,5 +1,5 @@
 import Client from '../../client/Client';
-import { Collection } from 'discord.js';
+import { Collection } from '@discordjs/collection';
 import { connect, Model } from 'mongoose';
 import TweetModel, { Tweet } from '../models/Tweet';
 import { Logger } from 'winston';
