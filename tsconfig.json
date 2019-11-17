@@ -11,6 +11,10 @@
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
 		"importHelpers": true,
+		"lib": [
+			"es2017.object",
+			"esnext"
+		],
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"noFallthroughCasesInSwitch": true,

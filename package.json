@@ -1,6 +1,6 @@
 {
     "name": "schedule",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A twitter bot to post daily updates on my school's schedule.",
     "private": true,
     "license": "Apache 2.0",
@@ -31,29 +31,25 @@
         "dotenv": "^8.0.0",
         "eslint": "^6.6.0",
         "eslint-config-marine": "^5.3.2",
-        "eslint-config-prettier": "^6.5.0",
+        "eslint-config-prettier": "^6.6.0",
         "eslint-plugin-prettier": "^3.1.1",
-        "prettier": "prettier/prettier",
+        "prettier": "^1.19.1",
         "rimraf": "^3.0.0",
         "typescript": "^3.7.2"
     },
     "scripts": {
-        "lint": "eslint src --ext .ts",
-        "test": "yarn run lint",
+        "build": "npm run cleardir && npm run compile",
         "cleardir": "rimraf build/*",
         "compile": "tsc",
-        "build": "npm run cleardir && npm run compile",
+        "lint": "eslint src --ext .ts",
+        "lint:fix": "eslint src --ext .ts --fix",
         "start": "npm run build && node .",
-        "version": "node src/bot/util/_version.js"
+        "test": "yarn run lint"
     },
     "keywords": [],
     "eslintConfig": {
         "extends": "marine/prettier/node",
         "rules": {
-            "comma-dangle": [
-                "error",
-                "always-multiline"
-            ],
             "@typescript-eslint/no-unnecessary-type-arguments": "off"
         }
     }

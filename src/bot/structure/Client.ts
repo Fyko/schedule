@@ -1,10 +1,10 @@
 import Collection from '@discordjs/collection';
-import RESTHandler from '../rest/RESTHandler';
 import { schedule, ScheduledTask } from 'node-cron';
 import { createLogger, format, Logger, transports } from 'winston';
-import { LoggerConfig } from '../util/LoggerConfig';
+import SettingsProvider from '../../database/provider/SettingsProvider';
 import { SCHEDULES } from '../util/Constants';
-import SettingsProvider from '../database/provider/SettingsProvider';
+import { LoggerConfig } from '../util/LoggerConfig';
+import RESTHandler from './RESTHandler';
 
 export default class Client {
 	public twitter: RESTHandler;
@@ -13,7 +13,7 @@ export default class Client {
 
 	public task!: ScheduledTask;
 
-	public waiting: Collection<string, any>;
+	public waiting: Collection<string, NodeJS.Timeout>;
 
 	public constructor() {
 		this.twitter = new RESTHandler(this);
@@ -45,24 +45,29 @@ export default class Client {
 
 		// if it is sunday or saturday
 		if ([0, 6].includes(day)) return;
-		const schedule = SCHEDULES[day];
+		const schedule = SCHEDULES[day]!;
 		try {
 			const images = [schedule[25].text];
 			if (schedule[26]) images.push(schedule[26].text);
-			const tweet = await this.twitter.tweet(schedule[0].text, images);
+			const tweet = { id_str: 1234 }; // await this.twitter.tweet(schedule[0].text, images);
 			if (tweet) {
 				await this.settings.new('tweet', {
 					tweetID: tweet.id_str,
 					schedule,
 				});
-				for (const [i, options] of Object.entries(schedule)) {
-					if (['0', '25', '26'].includes(`${i}`)) continue;
-					this.waiting.set(
-						i,
-						setTimeout(() => {
-							this.twitter.reply(options.text, tweet.id_str);
-						}, options.triggerAfter * 60 * 1000),
-					);
+				for (const [i, { text, triggerAt }] of Object.entries(schedule)) {
+					if (['0', '25', '26'].includes(i)) continue;
+
+					const now = new Date();
+					now.setHours(triggerAt.hr);
+					now.setMinutes(triggerAt.min);
+					const fireAt = new Date(now.toLocaleString('en-US', { timeZone: 'America/Denver' }));
+
+					this.settings.new('tweet', {
+						replyToID: tweet.id_str,
+						text,
+						triggerAt: fireAt,
+					});
 				}
 			} else {
 				this.logger.error(`[ERROR ON TWEET]: Tweet returned null.`);
@@ -70,7 +75,6 @@ export default class Client {
 		} catch (err) {
 			this.logger.error(`[ERROR ON HANDLE]: ${err}`);
 		}
-		console.dir(this.waiting);
 	}
 
 	private _createTask(): void {

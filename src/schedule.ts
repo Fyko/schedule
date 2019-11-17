@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 import { resolve } from 'path';
 config({ path: resolve(__dirname, '..', '.env') });
 
-import Client from './bot/client/Client';
+import Client from './bot/structure/Client';
 
 (() => {
 	const { CONSUMER_KEY, CONSUMER_KEY_SECRET, API_KEY, API_KEY_SECRET } = process.env;

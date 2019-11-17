@@ -1,5 +1,5 @@
 import twit, { Twitter } from 'twit';
-import Client from '../client/Client';
+import Client from './Client';
 const { get } = require('node-superfetch'); // eslint-disable-line
 
 export default class RESTHandler {

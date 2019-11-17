@@ -1,29 +1,23 @@
 import { Document, Schema, model } from 'mongoose';
-import { Schedule } from '../../util/Constants';
 
 export interface Tweet extends Document {
-	schedule: Schedule;
-	tweetID: string;
-	nextEvent: number;
-	createdAt: Date;
+	replyToID: string;
+	text: string;
+	triggerAt: Date;
 }
 
 const Tweet: Schema = new Schema(
 	{
-		tweetID: {
+		replyToID: {
 			type: String,
 			required: true,
 		},
-		nextEvent: {
-			type: Number,
-			default: 1,
+		text: {
+			type: String,
+			required: true,
 		},
-		createdAt: {
+		triggerAt: {
 			type: Date,
-			default: new Date(),
-		},
-		schedule: {
-			type: Object,
 			required: true,
 		},
 	},

@@ -1,4 +1,4 @@
-import Client from '../../client/Client';
+import Client from '../../bot/structure/Client';
 import Collection from '@discordjs/collection';
 import { connect, Model } from 'mongoose';
 import TweetModel, { Tweet } from '../models/Tweet';
@@ -42,7 +42,7 @@ export default class SettingsProvider {
 		this[type].set(doc.id, doc);
 		// @ts-ignore
 		await doc.save();
-		this.client.logger.info(`[DATABASE] Made new ${model.modelName} document with ID of ${doc._id}.`);
+		this.client.logger.verbose(`[DATABASE] Made new ${model.modelName} document with ID of ${doc._id}.`);
 		return doc;
 	}
 
@@ -51,7 +51,7 @@ export default class SettingsProvider {
 		const model = MODELS[type];
 		const doc = await model.findOneAndUpdate(data, { $set: key }, { new: true });
 		if (!doc) return null;
-		this.client.logger.info(`[DATABASE] Edited ${model.modelName} document with ID of ${doc._id}.`);
+		this.client.logger.verbose(`[DATABASE] Edited ${model.modelName} document with ID of ${doc._id}.`);
 		this[type].set(doc.id, doc);
 		return doc;
 	}
@@ -62,7 +62,7 @@ export default class SettingsProvider {
 		const doc = await model.findOneAndDelete(data);
 		if (!doc) return null;
 		this[type].delete(doc._id);
-		this.client.logger.info(`[DATABASE] Deleted ${model.modelName} document with ID of ${doc._id}.`);
+		this.client.logger.verbose(`[DATABASE] Deleted ${model.modelName} document with ID of ${doc._id}.`);
 		return doc;
 	}
 
