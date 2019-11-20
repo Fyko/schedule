@@ -22,12 +22,12 @@ export default class ScheduleHandler {
 		this.client.logger.info('[SCHEDULE HANDLER] Successfully launched schedule handler.');
 	}
 
-	private queue(schedule: Tweet): void {
+	private fire(schedule: Tweet): void {
 		if (this.client.settings.tweet.get(`${schedule.id}`)) this.client.settings.remove('tweet', { _id: schedule._id });
 		this.client.twitter.reply(schedule.text, schedule.replyToID);
 	}
 
-	private fire(schedule: Tweet): void {
+	private queue(schedule: Tweet): void {
 		this.client.logger.info(
 			`[SCHEDULE HANDLER] Setting ${schedule.id} timeout, ${(schedule.triggerAt.getTime() - Date.now()) /
 				1000} seconds left.`,
