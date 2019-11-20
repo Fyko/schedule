@@ -51,10 +51,6 @@ export default class Client {
 			if (schedule[26]) images.push(schedule[26].text);
 			const tweet = { id_str: 1234 }; // await this.twitter.tweet(schedule[0].text, images);
 			if (tweet) {
-				await this.settings.new('tweet', {
-					tweetID: tweet.id_str,
-					schedule,
-				});
 				for (const [i, { text, triggerAt }] of Object.entries(schedule)) {
 					if (['0', '25', '26'].includes(i)) continue;
 
