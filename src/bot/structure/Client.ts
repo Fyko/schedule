@@ -43,13 +43,12 @@ export default class Client {
 		const now = new Date();
 		const day = now.getDay();
 
-		// if it is sunday or saturday
 		if ([0, 6].includes(day)) return;
 		const schedule = SCHEDULES[day]!;
 		try {
 			const images = [schedule[25].text];
 			if (schedule[26]) images.push(schedule[26].text);
-			const tweet = { id_str: 1234 }; // await this.twitter.tweet(schedule[0].text, images);
+			const tweet = await this.twitter.tweet(schedule[0].text, images);
 			if (tweet) {
 				for (const [i, { text, triggerAt }] of Object.entries(schedule)) {
 					if (['0', '25', '26'].includes(i)) continue;
