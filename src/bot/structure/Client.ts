@@ -45,6 +45,7 @@ export default class Client {
 
 		if ([0, 6].includes(day)) return;
 		const schedule = SCHEDULES[day]!;
+		this.logger.info(`[NEW DAY]: STARTING NEW DAY! ${now.toLocaleString()}`);
 		try {
 			const images = [schedule[25].text];
 			if (schedule[26]) images.push(schedule[26].text);
