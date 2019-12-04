@@ -54,15 +54,14 @@ export default class Client {
 				for (const [i, { text, triggerAt }] of Object.entries(schedule)) {
 					if (['0', '25', '26'].includes(i)) continue;
 
-					const now = new Date();
+					const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Denver' }));
 					now.setHours(triggerAt.hr);
 					now.setMinutes(triggerAt.min);
-					const fireAt = new Date(now.toLocaleString('en-US', { timeZone: 'America/Denver' }));
 
 					this.settings.new('tweet', {
 						replyToID: tweet.id_str,
 						text,
-						triggerAt: fireAt,
+						triggerAt: now,
 					});
 				}
 			} else {
