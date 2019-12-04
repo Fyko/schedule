@@ -42,12 +42,13 @@ export default class ScheduleHandler {
 
 	private _check(): void {
 		const schedules = this.client.settings.tweet;
-		const now = Date.now();
+		const now = new Date();
 		if (!schedules.size) return;
-		this.client.logger.debug(`[MUTE MANAGER] Checking ${schedules.size} schedules.`);
+		this.client.logger.debug(`[SCHEDULE HANDLER] Checking ${schedules.size} schedules.`);
 		for (const m of schedules.values()) {
-			if (m.triggerAt.getTime() - now <= this.rate) this.queue(m);
-			if (!this.waiting.has(`${m.id}`) && now > m.triggerAt.getTime()) this.fire(m);
+			if (!m.triggerAt || m.triggerAt.getDate() !== now.getDate()) this.client.settings.remove('tweet', { _id: m._id });
+			else if (m.triggerAt.getTime() - now.getTime() <= this.rate) this.queue(m)
+			else if (!this.waiting.has(`${m.id}`) && now.getTime() > m.triggerAt.getTime()) this.fire(m);
 		}
 	}
 }
