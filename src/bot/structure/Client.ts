@@ -5,11 +5,14 @@ import SettingsProvider from '../../database/provider/SettingsProvider';
 import { SCHEDULES } from '../util/Constants';
 import { LoggerConfig } from '../util/LoggerConfig';
 import RESTHandler from './RESTHandler';
+import ScheduleHandler from './ScheduleHandler';
 
 export default class Client {
 	public twitter: RESTHandler;
 
 	public settings: SettingsProvider;
+
+	public scheduleHandler: ScheduleHandler;
 
 	public task!: ScheduledTask;
 
@@ -18,6 +21,7 @@ export default class Client {
 	public constructor() {
 		this.twitter = new RESTHandler(this);
 		this.settings = new SettingsProvider(this);
+		this.scheduleHandler = new ScheduleHandler(this);
 		this.waiting = new Collection();
 	}
 
@@ -86,6 +90,7 @@ export default class Client {
 
 	public async init(): Promise<void> {
 		await this.settings.init();
+		this.scheduleHandler.init();
 		this._createTask();
 		this.logger.debug('[STARTUP] Successfully launched Client.');
 	}
