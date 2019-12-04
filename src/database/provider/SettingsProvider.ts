@@ -89,7 +89,7 @@ export default class SettingsProvider {
 					useCreateIndex: true,
 					useNewUrlParser: true,
 					useFindAndModify: false,
-					useUnifiedTopology: true
+					useUnifiedTopology: true,
 				});
 			} catch (err) {
 				this.client.logger.error(`[DATABASE] Error when connecting to MongoDB:\n${err.stack}`);

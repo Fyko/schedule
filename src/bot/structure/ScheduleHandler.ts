@@ -47,7 +47,7 @@ export default class ScheduleHandler {
 		this.client.logger.debug(`[SCHEDULE HANDLER] Checking ${schedules.size} schedules.`);
 		for (const m of schedules.values()) {
 			if (!m.triggerAt || m.triggerAt.getDate() !== now.getDate()) this.client.settings.remove('tweet', { _id: m._id });
-			else if (m.triggerAt.getTime() - now.getTime() <= this.rate) this.queue(m)
+			else if (m.triggerAt.getTime() - now.getTime() <= this.rate) this.queue(m);
 			else if (!this.waiting.has(`${m.id}`) && now.getTime() > m.triggerAt.getTime()) this.fire(m);
 		}
 	}
