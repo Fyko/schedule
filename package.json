@@ -23,7 +23,7 @@
         "@types/common-tags": "^1.8.0",
         "@types/dotenv": "^8.2.0",
         "@types/mongoose": "^5.5.30",
-        "@types/node": "^12.12.9",
+        "@types/node": "^12.12.16",
         "@types/node-cron": "^2.0.2",
         "@types/twit": "^2.2.22",
         "@typescript-eslint/eslint-plugin": "^1.9.0",
