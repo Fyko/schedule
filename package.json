@@ -14,7 +14,7 @@
         "common-tags": "^1.8.0",
         "mongoose": "^5.8.1",
         "node-cron": "^2.0.3",
-        "node-superfetch": "^0.1.9",
+        "node-superfetch": "^0.1.10",
         "twit": "^2.2.11",
         "winston": "^3.2.1"
     },
