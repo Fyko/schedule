@@ -22,7 +22,7 @@
         "@sentry/node": "^5.6.2",
         "@types/common-tags": "^1.8.0",
         "@types/dotenv": "^8.2.0",
-        "@types/mongoose": "^5.5.30",
+        "@types/mongoose": "^5.10.3",
         "@types/node": "^12.12.17",
         "@types/node-cron": "^2.0.2",
         "@types/twit": "^2.2.22",
