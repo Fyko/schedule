@@ -30,7 +30,7 @@
         "@typescript-eslint/parser": "^1.9.0",
         "dotenv": "^8.0.0",
         "eslint": "^6.6.0",
-        "eslint-config-marine": "^5.3.2",
+        "eslint-config-marine": "^8.1.0",
         "eslint-config-prettier": "^6.7.0",
         "eslint-plugin-prettier": "^3.1.1",
         "prettier": "^1.19.1",
